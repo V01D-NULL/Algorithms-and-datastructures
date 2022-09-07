@@ -3,13 +3,13 @@
 
 typedef struct __node
 {
-	struct __node *next;
-	int data;
+    struct __node *next;
+    int data;
 } Node;
 
 typedef struct
 {
-	Node *head;
+    Node *head;
 } List;
 
 Node *new_node(int data);
