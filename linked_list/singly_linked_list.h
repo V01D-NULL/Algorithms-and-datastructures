@@ -16,10 +16,10 @@ Node *new_node(int data);
 List *init_head(int data);
 void append_node(Node *head, Node *node);
 void remove_node(Node *head, Node *node);
+void remove_all_nodes(Node *head);
 
 /* Insert node 'node' between node 'a' and 'b' */
 void insert_node(Node *head, Node *a, Node *b, Node *node);
 
 void print_nodes(Node *head);
-
 #endif // SLIST_H

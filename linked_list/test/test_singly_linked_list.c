@@ -1,4 +1,5 @@
 #include "../singly_linked_list.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 int main(void)
@@ -22,6 +23,10 @@ int main(void)
     printf("\nRemoving node with a value of: %d\n", node->data);
     remove_node(list->head, node);
     print_nodes(list->head);
+
+    /* Remove (free) all nodes and the list */
+    remove_all_nodes(list->head);
+    free(list);
 
     return 0;
 }

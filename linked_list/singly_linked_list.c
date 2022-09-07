@@ -35,6 +35,7 @@ void remove_node(Node *head, Node *node)
         if (head->next == node)
         {
             head->next = node->next;
+            free(node);
             return;
         }
         head = head->next;
@@ -54,6 +55,18 @@ void insert_node(Node *head, Node *a, Node *b, Node *node)
         }
         head = head->next;
     }
+}
+
+void remove_all_nodes(Node *head)
+{
+    Node *tmp = head;
+    while (tmp)
+    {
+        remove_node(head, tmp->next);
+        tmp = tmp->next;
+    }
+
+    free(head);
 }
 
 void print_nodes(Node *head)
