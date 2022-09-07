@@ -70,7 +70,12 @@ void vec_insert(Vector *v, int a, int b, int data)
         v->data[i] = v->data[i - 1];
     }
 
-    v->data[a + 1] = data;
+    // Inserting data between equal indicies (i.e. a==b)
+    // is the same as replacing the data at that index.
+    if (a == b)
+        v->data[a] = data;
+    else
+        v->data[a + 1] = data;
 }
 
 void vec_deinit(Vector *v)
