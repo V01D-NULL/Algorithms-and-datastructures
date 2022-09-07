@@ -7,5 +7,9 @@ Queue:
 	./build/queue.elf
 
 Vector:
-	gcc vector/vector.c vector/test/test_vector.c -std=c11 -o build/vector.elf
+	gcc vector/vector.c vector/test/test_vector.c -o build/vector.elf
 	./build/vector.elf
+
+Deque:
+	gcc vector/vector.c deque/deque.c deque/test/test_deque.c -o build/deque.elf
+	./build/deque.elf
