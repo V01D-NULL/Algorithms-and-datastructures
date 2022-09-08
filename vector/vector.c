@@ -16,13 +16,13 @@ Vector *vec_init(int capacity)
 void *vec_front(Vector *v)
 {
 	__vec_ensure_capacity(v);
-	return (void *)v->data[0];
+	return v->data[0];
 }
 
 void *vec_back(Vector *v)
 {
 	__vec_ensure_capacity(v);
-	return (void *)v->data[v->elements - 1];
+	return v->data[v->elements - 1];
 }
 
 void vec_push_back(Vector *v, void *data)
@@ -30,7 +30,7 @@ void vec_push_back(Vector *v, void *data)
 	if (v->elements == v->capacity)
 		vec_resize(v, v->capacity * 2);
 
-	v->data[v->elements++] = (uint64_t)data;
+	v->data[v->elements++] = data;
 }
 
 void vec_pop_back(Vector *v)
@@ -47,7 +47,7 @@ void vec_resize(Vector *v, int new_size)
 	assert(v->data && "Failed to resize vector");
 }
 
-int vec_get(Vector *v, int index)
+void *vec_get(Vector *v, int index)
 {
 	__vec_ensure_capacity(v);
 	assert(index <= v->elements - 1 && "Invalid index");
@@ -73,9 +73,9 @@ void vec_insert(Vector *v, int a, int b, void *data)
 	// Inserting data between equal indicies (i.e. a==b)
 	// is the same as replacing the data at that index.
 	if (a == b)
-		v->data[a] = (uint64_t)data;
+		v->data[a] = data;
 	else
-		v->data[a + 1] = (uint64_t)data;
+		v->data[a + 1] = data;
 }
 
 void vec_deinit(Vector *v)

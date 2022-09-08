@@ -5,7 +5,7 @@
 
 typedef struct __vector
 {
-	uint64_t *data;
+	uint64_t **data;
 	int capacity;
 	int elements;
 } Vector;
@@ -19,7 +19,7 @@ void *vec_back(Vector *v);
 void vec_push_back(Vector *v, void *data);
 void vec_pop_back(Vector *v);
 void vec_resize(Vector *v, int new_size);
-int vec_get(Vector *v, int index);
+void *vec_get(Vector *v, int index);
 void vec_insert(Vector *v, int a, int b, void *data);
 void vec_deinit(Vector *v);
 

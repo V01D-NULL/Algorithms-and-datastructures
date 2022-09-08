@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
+
 int main(void)
 {
 	/* Create vector */
@@ -16,7 +18,7 @@ int main(void)
 	printf("Iterating over vector:\n");
 	vec_foreach(v, i)
 	{
-		printf("vector[%d] = %d\n", i, vec_get(v, i));
+		printf("vector[%d] = %d\n", i, (int)vec_get(v, i));
 	}
 
 	/* Remove an element from the tail from the vector */
@@ -27,7 +29,7 @@ int main(void)
 	printf("Iterating over vector:\n");
 	vec_foreach(v, i)
 	{
-		printf("vector[%d] = %d\n", i, vec_get(v, i));
+		printf("vector[%d] = %d\n", i, (int)vec_get(v, i));
 	}
 
 	/* Push '456' and '789' to the tail of the vector */
@@ -39,18 +41,18 @@ int main(void)
 	printf("front: %d | back: %d\n", (int)vec_front(v), (int)vec_back(v));
 	vec_foreach(v, i)
 	{
-		printf("vector[%d] = %d\n", i, vec_get(v, i));
+		printf("vector[%d] = %d\n", i, (int)vec_get(v, i));
 	}
 
 	/* Retrieve a value using random access */
-	printf("Performing random access (index 1): %d\n", vec_get(v, 1));
+	printf("Performing random access (index 1): %d\n", (int)vec_get(v, 1));
 
 	/* 123, 999, 456, 789 */
 	printf("Inserting 999 between 123 and 456\n");
 	vec_insert(v, 0, 1, (void *)999);
 	vec_foreach(v, i)
 	{
-		printf("vector[%d] = %d\n", i, vec_get(v, i));
+		printf("vector[%d] = %d\n", i, (int)vec_get(v, i));
 	}
 
 	vec_deinit(v);
