@@ -88,7 +88,7 @@ void vec_remove(Vector *v, int at)
 
 void vec_emplace(Vector *v, int at, void *data)
 {
-    assert((at >= 0 && at <= v->capacity - 1) && "index out of range");
+    __vec_ensure_capacity(at);
     v->data[at] = data;
 }
 
