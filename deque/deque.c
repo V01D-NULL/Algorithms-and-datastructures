@@ -8,12 +8,12 @@ Deque *new_deque(int capacity)
     return q;
 }
 
-void deque_push_back(Deque *q, int data)
+void deque_push_back(Deque *q, void *data)
 {
     vec_push_back(q->queue, data);
 }
 
-void deque_push_front(Deque *q, int data)
+void deque_push_front(Deque *q, void *data)
 {
     vec_insert(q->queue, 0, 0, data);
 }
@@ -25,19 +25,15 @@ void deque_pop_back(Deque *q)
 
 void deque_pop_front(Deque *q)
 {
-    Vector *v = q->queue;
-
-    for (int i = 0; i < v->elements; i++)
-        v->data[i] = v->data[i + 1];
-    --v->elements;
+    vec_remove(q->queue, 0);
 }
 
-int deque_front(Deque *q)
+void *deque_front(Deque *q)
 {
     return vec_front(q->queue);
 }
 
-int deque_back(Deque *q)
+void *deque_back(Deque *q)
 {
     return vec_back(q->queue);
 }
