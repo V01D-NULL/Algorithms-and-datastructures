@@ -12,8 +12,6 @@
 #define printf(...)
 #endif
 
-static int capacity = 4;
-
 #define __hashmap_compute_index(key, bytes, cap) hash_code_to_index(hash(key, bytes), cap);
 #define __hashmap_ensure_unique_key(given_key, found_key, n)                                                           \
     do                                                                                                                 \
@@ -33,12 +31,12 @@ static void hashmap_resize(Hashmap *map, int new_capacity);
 // Fowler-no-vol hash
 static uint64_t hash(const signed char volatile *key, int key_size)
 {
-    volatile uint64_t hash = 0xcbf29ce484222325;
+    uint64_t hash = 0xcbf29ce484222325;
 
     for (int i = 0; i < key_size; i++)
     {
         hash ^= key[i];
-        hash *= (volatile long)0x100000001b3;
+        hash *= 0x100000001b3;
     }
 
     return hash;
@@ -69,7 +67,7 @@ Hashmap *hashmap_create(int capacity, int key_size)
  */
 void hashmap_insert(Hashmap *map, Key key, Value value)
 {
-    int index = __hashmap_compute_index((const signed char *)key, map->key_size, map->capacity);
+    int index = __hashmap_compute_index((const signed char volatile *)key, map->key_size, map->capacity);
     printf("Projected index of key '%s': %d\n", (char *)key, index);
 
     if (index >= map->capacity - 1 && map->resize)
