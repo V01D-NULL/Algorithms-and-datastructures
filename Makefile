@@ -23,3 +23,7 @@ Hashmap:
 BinarySearchTree:
 	@gcc $(CC_FLAGS) bst/bst.c bst/test/test_bst.c bst/displayTree.c -lm -o build/BinarySearchTree.elf
 	@./build/BinarySearchTree.elf
+
+RedBlackTree:
+	@gcc $(CC_FLAGS) rbtree/rbtree.c rbtree/rbvalidate.c rbtree/test/test_rbtree.c rbtree/displayTree.c -lm -o build/RedBlackTree.elf
+	@./build/RedBlackTree.elf
